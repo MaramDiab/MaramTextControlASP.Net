@@ -1,0 +1,153 @@
+﻿@using TXTextControl.Web.MVC
+@using TXTextControl.Web
+@using System.Text
+@using MaramTX.Controllers
+
+@Html.TXTextControl().TextControl(settings => {
+	settings.WebSocketURL="wss://backend.textcontrol.com?access-token=h4CVCxoW9UANqceWL4qk";
+}).Render()
+
+@Html.TXTextControl().TextControl(settings =>
+    {
+        settings.Dock = DockStyle.Fill;
+    }).Render()
+
+<button id="btnSelect" class="btn mt-3 btn-success">Load Document</button>
+<button id="formating" class="btn mt-3 btn-success">
+    
+    CharacterFormating
+</button>
+<button id="formatingp" class="btn mt-3 btn-success">
+    paragh
+    </button>
+<script src="~/js/jquery.js"></script>
+<script>
+    var filename;
+    $("#btnSelect").click(function () {
+      
+        var $input = $('<input type="file" />');
+        $input.change(function () {
+            var str = $(this).val().toString();
+            var arr = str.split("\\");
+            var len = arr.length;
+            filename = arr[len - 1];
+      //      alert(filename);
+            LoadDocument(filename);
+        });
+        $input.trigger('click');
+    });
+    var html = "This is some <b>HTML</b> text.";
+
+    var encoded = btoa(html); // btoa base-64-encodes strings.
+    var fileExt;
+
+
+    function LoadDocument(filename) {
+
+        
+        var x = document.getElementById("test");
+        //alert(x);
+        var serviceURL = "@Url.Action("LoadDocument", "Home")";
+        $.ajax({
+            type: "GET",
+            url: serviceURL,
+            data: {
+                filename: filename
+            },
+            success: successFunc,
+            error: errorFunc
+        });
+     
+            function successFunc(data, status) {
+            fileExt = filename.split('.').pop();
+        
+            if (fileExt == 'txt') {
+                TXTextControl.loadDocument(TXTextControl.StreamType.PlainText, data);
+              
+            }
+            else if (fileExt == 'docx') {
+                TXTextControl.loadDocument(TXTextControl.StreamType.WordprocessingML, data);
+              
+            }
+            else if (fileExt == 'html') {
+                TXTextControl.loadDocument(TXTextControl.StreamType.HTMLFormat, data);
+             
+            }
+            else if (fileExt == 'unicode') {
+                TXTextControl.loadDocument(TXTextControl.StreamType.InternalUnicodeFormat, data);
+            
+            } else if (fileExt == 'doc') {
+                TXTextControl.loadDocument(TXTextControl.StreamType.MSWord, data);
+            
+            }
+            else if (fileExt == 'rtf') {
+                TXTextControl.loadDocument(TXTextControl.StreamType.RichTextFormat, data);
+             
+            }
+            else if (fileExt == 'pdf') {
+                TXTextControl.loadDocument(TXTextControl.StreamType.AdobePDF, data);
+                
+            }
+            else if (fileExt == 'xml') {
+                TXTextControl.loadDocument(TXTextControl.StreamType.XMLFormat, data);
+
+            }
+            else if (fileExt == 'xlsx') {
+                TXTextControl.loadDocument(TXTextControl.StreamType.SpreadsheetML, data);
+
+            }
+
+          
+            //TXTextControl.loadDocument(TXTextControl.StreamType.WordprocessingML, data);
+       
+            //HTMLFormat: 0x0004,
+            //RichTextFormat: 0x0008,
+            //PlainText: 0x0010,
+            //InternalUnicodeFormat: 0x0020,
+            //MSWord: 0x0040,
+            //AdobePDF: 0x0200,
+            //WordprocessingML: 0x0400
+           console.log(data);
+           // TXTextControl.loadDocument(TXTextControl.StreamType.HTMLFormat, encoded);
+        
+        }
+        function errorFunc() {
+            alert("Error");
+        }
+        document.getElementById("formating").onclick = function () { FormatCharacters() };
+        document.getElementById("formatingp").onclick = function () { FormatParagraph() };
+        function FormatCharacters() {
+            console.log("Test");
+            // Font's size
+            TXTextControl.selection.setFontSize(36); // in points
+            // Font's
+            TXTextControl.selection.setFontName("Bahnschrift");
+            // Fore-Color
+            TXTextControl.selection.setForeColor("White");
+            // Back-Color
+            TXTextControl.selection.setTextBackColor("Blue");
+            // Bold
+            TXTextControl.selection.setBold(true);
+            // Italic
+            TXTextControl.selection.setItalic(true);
+            // Strikeout
+            TXTextControl.selection.setStrikeout(true);
+        }
+
+        function FormatParagraph() {
+            // Back Color
+            TXTextControl.selection.ParagraphFormat.setBackColor("Yellow");
+            // Frameline's color
+            TXTextControl.selection.ParagraphFormat.setFrameLineColor("Blue");
+            // Frameline's width
+            TXTextControl.selection.ParagraphFormat.setFrameLineWidth(10); // in twips
+            // Double frameline
+            TXTextControl.selection.ParagraphFormat.setFrameStyle(TXTextControl.FrameStyle.Double);
+        }
+
+
+    }
+
+
+</script>
+

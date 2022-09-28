@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "BQYdi67gPPYb+9nX/KLdxJjzmSxQxCofP8IYhWI4Qi3DHZHI3vAJGEDW7TP7zW2A6eD0FEqAoo25Vu7d3ma5/A==",
+  "dgSpecHash": "ps9ih1Cj98dpyK3z4y1MajVLdh5Uiqu8qqvmF7l3cOc83HULgHM9P7AjkVLVNal55sCaQ6aJ9dDgTibIJbdJhQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\user\\source\\repos\\MaramTX\\MaramTX\\MaramTX.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\buildbundlerminifier\\3.2.449\\buildbundlerminifier.3.2.449.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\htmlagilitypack\\1.11.23\\htmlagilitypack.1.11.23.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\jquery\\1.4.4\\jquery.1.4.4.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
@@ -141,7 +142,9 @@
     "C:\\Users\\user\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\system.xml.xpath\\4.3.0\\system.xml.xpath.4.3.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\system.xml.xpath.xmldocument\\4.3.0\\system.xml.xpath.xmldocument.4.3.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\txtextcontrol.documentservices.documenteditor\\2.0.0\\txtextcontrol.documentservices.documenteditor.2.0.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\txtextcontrol.textcontrol.asp.sdk\\31.0.0\\txtextcontrol.textcontrol.asp.sdk.31.0.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\txtextcontrol.textcontrol.winforms.sdk\\31.0.0\\txtextcontrol.textcontrol.winforms.sdk.31.0.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\txtextcontrol.web\\31.0.0\\txtextcontrol.web.31.0.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\txtextcontrol.web.documentviewer\\31.0.0\\txtextcontrol.web.documentviewer.31.0.0.nupkg.sha512"
   ],

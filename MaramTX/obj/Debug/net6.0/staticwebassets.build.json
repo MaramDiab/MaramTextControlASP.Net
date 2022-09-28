@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "OdkwcSxyfNy9CiF6CWdt3QSJTc1AqZhzQ9shANyrWxk=",
+  "Hash": "m5CrJRTZCLMEnDFkoHz3NuUGdvn44yfmYS5qazk16GY=",
   "Source": "MaramTX",
   "BasePath": "_content/MaramTX",
   "Mode": "Default",
@@ -83,6 +83,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\user\\source\\repos\\MaramTX\\MaramTX\\wwwroot\\js\\jquery.js",
+      "SourceId": "MaramTX",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\user\\source\\repos\\MaramTX\\MaramTX\\wwwroot\\",
+      "BasePath": "_content/MaramTX",
+      "RelativePath": "js/jquery.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\jquery.js"
+    },
+    {
+      "Identity": "C:\\Users\\user\\source\\repos\\MaramTX\\MaramTX\\wwwroot\\js\\jquery.min.js",
+      "SourceId": "MaramTX",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\user\\source\\repos\\MaramTX\\MaramTX\\wwwroot\\",
+      "BasePath": "_content/MaramTX",
+      "RelativePath": "js/jquery.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\jquery.min.js"
     },
     {
       "Identity": "C:\\Users\\user\\source\\repos\\MaramTX\\MaramTX\\wwwroot\\js\\site.js",

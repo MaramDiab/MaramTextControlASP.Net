@@ -1,0 +1,42 @@
+﻿@using TXTextControl.Web.MVC
+@using TXTextControl.Web
+@using System.Text
+@using MaramTX.Controllers
+
+@Html.TXTextControl().TextControl(settings => {
+	settings.WebSocketURL="wss://backend.textcontrol.com?access-token=h4CVCxoW9UANqceWL4qk";
+}).Render()
+
+@Html.TXTextControl().TextControl(settings =>
+{
+    settings.Dock = DockStyle.Fill;
+}).LoadText("~/maramtest.txt",
+    StreamType.PlainText).Render()
+    <script>
+    <button id="btnSelect" class="btn mt-3 btn-success" > Load Document < /button>
+
+    function FormatCharacters() {
+
+        // Font's size
+        TXTextControl.selection.setFontSize(36); // in points
+        // Font's
+        TXTextControl.selection.setFontName("Bahnschrift");
+        // Fore-Color
+        TXTextControl.selection.setForeColor("White");
+        // Back-Color
+        TXTextControl.selection.setTextBackColor("Blue");
+        // Bold
+        TXTextControl.selection.setBold(true);
+        // Italic
+        TXTextControl.selection.setItalic(true);
+        // Strikeout
+        TXTextControl.selection.setStrikeout(true);
+    }
+
+
+
+
+
+
+
+    </script>

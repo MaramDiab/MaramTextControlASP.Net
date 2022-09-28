@@ -1,0 +1,17 @@
+﻿@using TXTextControl.Web
+@using TXTextControl.Web.MVC
+@using System.Text
+@using MaramTX.Controllers
+@Html.TXTextControl().TextControl(settings =>
+{
+    settings.Dock = DockStyle.Fill;
+}).Render()
+
+<button onclick="LoadDocumentFromClient()" class="btn mt-3 btn-success">Load Document</button>
+<script>
+    function LoadDocumentFromClient() {
+        var html = "This is some <b>HTML</b> text.";
+        var encoded = btoa(html);  // btoa base-64-encodes strings.
+        TXTextControl.loadDocument(TXTextControl.StreamType.HTMLFormat, encoded);
+    }
+</script>

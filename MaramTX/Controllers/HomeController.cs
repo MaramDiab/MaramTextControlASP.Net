@@ -1,6 +1,4 @@
 ﻿using MaramTX.Models;
-using MaramTX.Views.Home;
-using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Reflection.Metadata;
@@ -13,6 +11,11 @@ namespace MaramTX.Controllers
         private readonly ILogger<HomeController> _logger;
         //to get any files within the root 
         private IWebHostEnvironment _environment;
+
+        public ActionResult UploadFile()
+        {
+            return View();
+        }
         public HomeController(ILogger<HomeController> logger, IWebHostEnvironment environment)
         {
             _logger = logger;
@@ -23,7 +26,18 @@ namespace MaramTX.Controllers
         {
             return View();
         }
-
+        public IActionResult LoadingFromView()
+        {
+            return View();
+        }
+        public IActionResult DocumentViewer()
+        {
+            return View();
+        }
+        public IActionResult CharacterFormatting()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();
@@ -35,16 +49,27 @@ namespace MaramTX.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-       
+        public IActionResult ChooseFile()
+        {
+            return View();
+        }
         //get document after loaded
 
-          
+        public IActionResult LoadingFromController()
+        {
+            return View();
+        }
+        public IActionResult LoadingFromJavaScript()
+        {
+            return View();
+        }
 
 
         [HttpGet]
-        public string LoadDocument()
+        public string LoadDocument(string filename)
         {
-            string uploads = Path.Combine(_environment.WebRootPath, "MaramTest.docx") ;
+            
+            string uploads = Path.Combine(_environment.WebRootPath, filename) ;
            
             string sDocument = Convert.ToBase64String(
             System.IO.File.ReadAllBytes(uploads));
@@ -52,10 +77,13 @@ namespace MaramTX.Controllers
             return sDocument;
         }
 
+     
+        [HttpGet]
+        public IActionResult Export() {
+            return View();
+        }
        
      
-
-
 
 
 

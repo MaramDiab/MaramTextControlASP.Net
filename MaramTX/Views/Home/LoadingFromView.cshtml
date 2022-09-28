@@ -1,0 +1,18 @@
+﻿@using TXTextControl.Web
+@using TXTextControl.Web.MVC
+@using System.Text
+@using MaramTX.Controllers
+@Html.TXTextControl().TextControl(settings => {
+	settings.WebSocketURL="wss://backend.textcontrol.com?access-token=h4CVCxoW9UANqceWL4qk";
+}).Render()
+
+@Html.TXTextControl().TextControl(settings =>
+{
+    settings.Dock = DockStyle.Fill;
+}).LoadText("C:/Users/user/source/repos/MaramTX/MaramTX/wwwroot/maramtest.txt",
+    StreamType.InternalUnicodeFormat).Render()
+<script>
+    TXTextControl.addEventListener("documentLoaded", function () {
+        alert("Document loaded");
+    });
+    </script>

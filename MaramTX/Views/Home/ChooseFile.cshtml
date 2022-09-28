@@ -1,0 +1,18 @@
+﻿<div class="col-lg-6 col-md-6 col-sm-6">
+    <button class="button-analyse" id="btnSelect">
+        select file
+    </button>
+</div>
+<script src="~/js/jquery.js"></script>
+<script>
+    $("#btnSelect").click(function(){
+        var $input = $('<input type="file"/>');
+        $input.change(function() {
+        var str = $(this).val().toString();
+        var arr = str.split("\\");
+        var len = arr.length;
+          alert(arr[len-1]);
+        });
+        $input.trigger('click');
+    });
+</script>

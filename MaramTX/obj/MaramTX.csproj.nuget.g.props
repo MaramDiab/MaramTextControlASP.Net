@@ -82,6 +82,16 @@
     </Content>
   </ItemGroup>
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <EmbeddedResource Include="$(NuGetPackageRoot)txtextcontrol.textcontrol.winforms.sdk\31.0.0\contentFiles\any\any\licenses.licx" Condition="Exists('$(NuGetPackageRoot)txtextcontrol.textcontrol.winforms.sdk\31.0.0\contentFiles\any\any\licenses.licx')">
+      <NuGetPackageId>TXTextControl.TextControl.WinForms.SDK</NuGetPackageId>
+      <NuGetPackageVersion>31.0.0</NuGetPackageVersion>
+      <NuGetItemType>EmbeddedResource</NuGetItemType>
+      <Pack>false</Pack>
+      <Private>False</Private>
+      <Link>licenses.licx</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <EmbeddedResource Include="$(NuGetPackageRoot)txtextcontrol.textcontrol.asp.sdk\31.0.0\contentFiles\any\any\licenses.licx" Condition="Exists('$(NuGetPackageRoot)txtextcontrol.textcontrol.asp.sdk\31.0.0\contentFiles\any\any\licenses.licx')">
       <NuGetPackageId>TXTextControl.TextControl.ASP.SDK</NuGetPackageId>
       <NuGetPackageVersion>31.0.0</NuGetPackageVersion>
@@ -94,6 +104,7 @@
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <PkgBuildBundlerMinifier Condition=" '$(PkgBuildBundlerMinifier)' == '' ">C:\Users\user\.nuget\packages\buildbundlerminifier\3.2.449</PkgBuildBundlerMinifier>
     <PkgTXTextControl_Web Condition=" '$(PkgTXTextControl_Web)' == '' ">C:\Users\user\.nuget\packages\txtextcontrol.web\31.0.0</PkgTXTextControl_Web>
+    <PkgTXTextControl_TextControl_WinForms_SDK Condition=" '$(PkgTXTextControl_TextControl_WinForms_SDK)' == '' ">C:\Users\user\.nuget\packages\txtextcontrol.textcontrol.winforms.sdk\31.0.0</PkgTXTextControl_TextControl_WinForms_SDK>
     <PkgTXTextControl_TextControl_ASP_SDK Condition=" '$(PkgTXTextControl_TextControl_ASP_SDK)' == '' ">C:\Users\user\.nuget\packages\txtextcontrol.textcontrol.asp.sdk\31.0.0</PkgTXTextControl_TextControl_ASP_SDK>
   </PropertyGroup>
 </Project>

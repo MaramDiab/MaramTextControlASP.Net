@@ -27,6 +27,9 @@
           }
         }
       },
+      "jQuery/1.4.4": {
+        "type": "package"
+      },
       "Microsoft.AspNetCore.Antiforgery/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -2362,6 +2365,24 @@
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
       },
+      "TXTextControl.DocumentServices.DocumentEditor/2.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Html.Abstractions": "2.2.0",
+          "Microsoft.AspNetCore.Mvc.ViewFeatures": "2.2.0",
+          "Microsoft.AspNetCore.WebUtilities": "2.2.0"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/TXTextControl.DocumentServices.DocumentEditor.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/TXTextControl.DocumentServices.DocumentEditor.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "TXTextControl.TextControl.ASP.SDK/31.0.0": {
         "type": "package",
         "dependencies": {
@@ -2388,6 +2409,148 @@
           "lib/net5.0/TXDrawing.dll": {},
           "lib/net5.0/TXImageProvider.dll": {},
           "lib/net5.0/TXTextControl.Server.dll": {},
+          "lib/net5.0/TXTextControl.dll": {},
+          "lib/net5.0/txpdf.dll": {}
+        },
+        "resource": {
+          "lib/net5.0/de/TXBarcode.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net5.0/de/TXDocumentServer.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net5.0/de/TXDrawing.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net5.0/de/TXTextControl.resources.dll": {
+            "locale": "de"
+          }
+        },
+        "contentFiles": {
+          "contentFiles/any/any/licenses.licx": {
+            "buildAction": "EmbeddedResource",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win-x64/native/tx31_css.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/tx31_doc.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/tx31_dox.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/tx31_htm.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/tx31_pdf.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/tx31_rtf.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/tx31_xlx.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/tx31_xml.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/txic.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/txkernel.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/txtools.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/tx31_css.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/tx31_doc.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/tx31_dox.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/tx31_htm.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/tx31_pdf.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/tx31_rtf.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/tx31_xlx.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/tx31_xml.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/txic.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/txkernel.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/txtools.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
+      "TXTextControl.TextControl.WinForms.SDK/31.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/TXBarcode.Windows.Forms.dll": {},
+          "lib/net5.0/TXBarcode.dll": {},
+          "lib/net5.0/TXDocumentServer.Windows.Forms.dll": {},
+          "lib/net5.0/TXDocumentServer.dll": {},
+          "lib/net5.0/TXDrawing.Windows.Forms.dll": {},
+          "lib/net5.0/TXDrawing.dll": {},
+          "lib/net5.0/TXImageProvider.dll": {},
+          "lib/net5.0/TXTextControl.Server.dll": {},
+          "lib/net5.0/TXTextControl.Windows.Forms.Design.dll": {},
+          "lib/net5.0/TXTextControl.Windows.Forms.dll": {},
+          "lib/net5.0/TXTextControl.dll": {},
+          "lib/net5.0/txpdf.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/TXBarcode.Windows.Forms.dll": {},
+          "lib/net5.0/TXBarcode.dll": {},
+          "lib/net5.0/TXDocumentServer.Windows.Forms.dll": {},
+          "lib/net5.0/TXDocumentServer.dll": {},
+          "lib/net5.0/TXDrawing.Windows.Forms.dll": {},
+          "lib/net5.0/TXDrawing.dll": {},
+          "lib/net5.0/TXImageProvider.dll": {},
+          "lib/net5.0/TXTextControl.Server.dll": {},
+          "lib/net5.0/TXTextControl.Windows.Forms.Design.dll": {},
+          "lib/net5.0/TXTextControl.Windows.Forms.dll": {},
           "lib/net5.0/TXTextControl.dll": {},
           "lib/net5.0/txpdf.dll": {}
         },
@@ -2668,6 +2831,20 @@
         "lib/uap10.0/HtmlAgilityPack.dll",
         "lib/uap10.0/HtmlAgilityPack.pdb",
         "lib/uap10.0/HtmlAgilityPack.pri"
+      ]
+    },
+    "jQuery/1.4.4": {
+      "sha512": "kexCeYIZehR5fRjo8CK1sngN5SZEQRFNfCYZHMS1RxwEEiSKetBw/gliYJcLJdJEBB+e9aHqleLCjuaSI7u23g==",
+      "type": "package",
+      "path": "jquery/1.4.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Content/Scripts/jquery-1.4.4-vsdoc.js",
+        "Content/Scripts/jquery-1.4.4.js",
+        "Content/Scripts/jquery-1.4.4.min.js",
+        "jquery.1.4.4.nupkg.sha512",
+        "jquery.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Antiforgery/2.2.0": {
@@ -7281,6 +7458,21 @@
         "system.xml.xpath.xmldocument.nuspec"
       ]
     },
+    "TXTextControl.DocumentServices.DocumentEditor/2.0.0": {
+      "sha512": "d2ZIYvO5dbcAL6Nnh9H1G2ZRR4vMuKdh3KxJ4apLe9tfltzeIs11l0PiTW/g/iWCvgJpU1QuuvNshC1neu08pQ==",
+      "type": "package",
+      "path": "txtextcontrol.documentservices.documenteditor/2.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/netcoreapp3.1/TXTextControl.DocumentServices.DocumentEditor.dll",
+        "lib/netcoreapp3.1/TXTextControl.DocumentServices.DocumentEditor.xml",
+        "tx_ds.png",
+        "txtextcontrol.documentservices.documenteditor.2.0.0.nupkg.sha512",
+        "txtextcontrol.documentservices.documenteditor.nuspec"
+      ]
+    },
     "TXTextControl.TextControl.ASP.SDK/31.0.0": {
       "sha512": "RyGi7uoo/DEtkGlpbft1XWGv3lpKzUdqW7W2+OE+tDYY5L4RuU9HWE4Bj4C+d2x3jXdmu78So99gCLCc6TCrew==",
       "type": "package",
@@ -7330,6 +7522,59 @@
         "tx31.png",
         "txtextcontrol.textcontrol.asp.sdk.31.0.0.nupkg.sha512",
         "txtextcontrol.textcontrol.asp.sdk.nuspec"
+      ]
+    },
+    "TXTextControl.TextControl.WinForms.SDK/31.0.0": {
+      "sha512": "Nts6GxQrD3H/YHE8YqtPOKdAeNTEatosNoRcispOXSt2woxm6bUOYb1VtEaSoQpQFXzP/pjfnpOUmdGkaVXzfA==",
+      "type": "package",
+      "path": "txtextcontrol.textcontrol.winforms.sdk/31.0.0",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        "LICENSE.md",
+        "contentFiles/any/any/licenses.licx",
+        "lib/net5.0/TXBarcode.Windows.Forms.dll",
+        "lib/net5.0/TXBarcode.dll",
+        "lib/net5.0/TXDocumentServer.Windows.Forms.dll",
+        "lib/net5.0/TXDocumentServer.dll",
+        "lib/net5.0/TXDrawing.Windows.Forms.dll",
+        "lib/net5.0/TXDrawing.dll",
+        "lib/net5.0/TXImageProvider.dll",
+        "lib/net5.0/TXTextControl.Server.dll",
+        "lib/net5.0/TXTextControl.Windows.Forms.Design.dll",
+        "lib/net5.0/TXTextControl.Windows.Forms.dll",
+        "lib/net5.0/TXTextControl.dll",
+        "lib/net5.0/de/TXBarcode.resources.dll",
+        "lib/net5.0/de/TXDocumentServer.resources.dll",
+        "lib/net5.0/de/TXDrawing.resources.dll",
+        "lib/net5.0/de/TXTextControl.resources.dll",
+        "lib/net5.0/txpdf.dll",
+        "runtimes/win-x64/native/tx31_css.dll",
+        "runtimes/win-x64/native/tx31_doc.dll",
+        "runtimes/win-x64/native/tx31_dox.dll",
+        "runtimes/win-x64/native/tx31_htm.dll",
+        "runtimes/win-x64/native/tx31_pdf.dll",
+        "runtimes/win-x64/native/tx31_rtf.dll",
+        "runtimes/win-x64/native/tx31_xlx.dll",
+        "runtimes/win-x64/native/tx31_xml.dll",
+        "runtimes/win-x64/native/txic.dll",
+        "runtimes/win-x64/native/txkernel.dll",
+        "runtimes/win-x64/native/txtools.dll",
+        "runtimes/win-x86/native/tx31_css.dll",
+        "runtimes/win-x86/native/tx31_doc.dll",
+        "runtimes/win-x86/native/tx31_dox.dll",
+        "runtimes/win-x86/native/tx31_htm.dll",
+        "runtimes/win-x86/native/tx31_pdf.dll",
+        "runtimes/win-x86/native/tx31_rtf.dll",
+        "runtimes/win-x86/native/tx31_xlx.dll",
+        "runtimes/win-x86/native/tx31_xml.dll",
+        "runtimes/win-x86/native/txic.dll",
+        "runtimes/win-x86/native/txkernel.dll",
+        "runtimes/win-x86/native/txtools.dll",
+        "tools/VisualStudioToolsManifest.xml",
+        "tx31.png",
+        "txtextcontrol.textcontrol.winforms.sdk.31.0.0.nupkg.sha512",
+        "txtextcontrol.textcontrol.winforms.sdk.nuspec"
       ]
     },
     "TXTextControl.Web/31.0.0": {
@@ -7386,9 +7631,12 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "TXTextControl.DocumentServices.DocumentEditor >= 2.0.0",
       "TXTextControl.TextControl.ASP.SDK >= 31.0.0",
+      "TXTextControl.TextControl.WinForms.SDK >= 31.0.0",
       "TXTextControl.Web >= 31.0.0",
-      "TXTextControl.Web.DocumentViewer >= 31.0.0"
+      "TXTextControl.Web.DocumentViewer >= 31.0.0",
+      "jQuery >= 1.4.4"
     ]
   },
   "packageFolders": {
@@ -7437,7 +7685,15 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "TXTextControl.DocumentServices.DocumentEditor": {
+            "target": "Package",
+            "version": "[2.0.0, )"
+          },
           "TXTextControl.TextControl.ASP.SDK": {
+            "target": "Package",
+            "version": "[31.0.0, )"
+          },
+          "TXTextControl.TextControl.WinForms.SDK": {
             "target": "Package",
             "version": "[31.0.0, )"
           },
@@ -7448,6 +7704,10 @@
           "TXTextControl.Web.DocumentViewer": {
             "target": "Package",
             "version": "[31.0.0, )"
+          },
+          "jQuery": {
+            "target": "Package",
+            "version": "[1.4.4, )"
           }
         },
         "imports": [
@@ -7469,7 +7729,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -8,9 +8,12 @@
     ".NETCoreApp,Version=v6.0": {
       "MaramTX/1.0.0": {
         "dependencies": {
+          "TXTextControl.DocumentServices.DocumentEditor": "2.0.0",
           "TXTextControl.TextControl.ASP.SDK": "31.0.0",
+          "TXTextControl.TextControl.WinForms.SDK": "31.0.0",
           "TXTextControl.Web": "31.0.0",
-          "TXTextControl.Web.DocumentViewer": "31.0.0"
+          "TXTextControl.Web.DocumentViewer": "31.0.0",
+          "jQuery": "1.4.4"
         },
         "runtime": {
           "MaramTX.dll": {}
@@ -31,6 +34,7 @@
           }
         }
       },
+      "jQuery/1.4.4": {},
       "Microsoft.AspNetCore.Antiforgery/2.2.0": {
         "dependencies": {
           "Microsoft.AspNetCore.DataProtection": "2.2.0",
@@ -1131,6 +1135,19 @@
           }
         }
       },
+      "TXTextControl.DocumentServices.DocumentEditor/2.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Html.Abstractions": "2.2.0",
+          "Microsoft.AspNetCore.Mvc.ViewFeatures": "2.2.0",
+          "Microsoft.AspNetCore.WebUtilities": "2.2.0"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/TXTextControl.DocumentServices.DocumentEditor.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        }
+      },
       "TXTextControl.TextControl.ASP.SDK/31.0.0": {
         "dependencies": {
           "System.Drawing.Common": "6.0.0"
@@ -1310,6 +1327,22 @@
           }
         }
       },
+      "TXTextControl.TextControl.WinForms.SDK/31.0.0": {
+        "runtime": {
+          "lib/net5.0/TXDocumentServer.Windows.Forms.dll": {
+            "assemblyVersion": "31.0.1400.500",
+            "fileVersion": "31.0.1400.500"
+          },
+          "lib/net5.0/TXTextControl.Windows.Forms.Design.dll": {
+            "assemblyVersion": "31.0.115.500",
+            "fileVersion": "31.0.115.500"
+          },
+          "lib/net5.0/TXTextControl.Windows.Forms.dll": {
+            "assemblyVersion": "31.0.1600.500",
+            "fileVersion": "31.0.1600.500"
+          }
+        }
+      },
       "TXTextControl.Web/31.0.0": {
         "dependencies": {
           "HtmlAgilityPack": "1.11.23",
@@ -1363,6 +1396,13 @@
       "sha512": "sha512-+cgMfM0ks6njN1HjeH157wcF9n9CksuLk4yzKZ3j5/dhC+t1xZ6SZVnksGZZ+6H22Y2RQ6gUEpue4E912271Hg==",
       "path": "htmlagilitypack/1.11.23",
       "hashPath": "htmlagilitypack.1.11.23.nupkg.sha512"
+    },
+    "jQuery/1.4.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kexCeYIZehR5fRjo8CK1sngN5SZEQRFNfCYZHMS1RxwEEiSKetBw/gliYJcLJdJEBB+e9aHqleLCjuaSI7u23g==",
+      "path": "jquery/1.4.4",
+      "hashPath": "jquery.1.4.4.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Antiforgery/2.2.0": {
       "type": "package",
@@ -2309,12 +2349,26 @@
       "path": "system.xml.xpath.xmldocument/4.3.0",
       "hashPath": "system.xml.xpath.xmldocument.4.3.0.nupkg.sha512"
     },
+    "TXTextControl.DocumentServices.DocumentEditor/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-d2ZIYvO5dbcAL6Nnh9H1G2ZRR4vMuKdh3KxJ4apLe9tfltzeIs11l0PiTW/g/iWCvgJpU1QuuvNshC1neu08pQ==",
+      "path": "txtextcontrol.documentservices.documenteditor/2.0.0",
+      "hashPath": "txtextcontrol.documentservices.documenteditor.2.0.0.nupkg.sha512"
+    },
     "TXTextControl.TextControl.ASP.SDK/31.0.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-RyGi7uoo/DEtkGlpbft1XWGv3lpKzUdqW7W2+OE+tDYY5L4RuU9HWE4Bj4C+d2x3jXdmu78So99gCLCc6TCrew==",
       "path": "txtextcontrol.textcontrol.asp.sdk/31.0.0",
       "hashPath": "txtextcontrol.textcontrol.asp.sdk.31.0.0.nupkg.sha512"
+    },
+    "TXTextControl.TextControl.WinForms.SDK/31.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Nts6GxQrD3H/YHE8YqtPOKdAeNTEatosNoRcispOXSt2woxm6bUOYb1VtEaSoQpQFXzP/pjfnpOUmdGkaVXzfA==",
+      "path": "txtextcontrol.textcontrol.winforms.sdk/31.0.0",
+      "hashPath": "txtextcontrol.textcontrol.winforms.sdk.31.0.0.nupkg.sha512"
     },
     "TXTextControl.Web/31.0.0": {
       "type": "package",

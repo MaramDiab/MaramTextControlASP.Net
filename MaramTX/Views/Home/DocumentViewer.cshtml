@@ -1,0 +1,54 @@
+﻿@using TXTextControl.Web.MVC.DocumentViewer
+@using System.Text
+@using MaramTX.Controllers
+
+<div style="width: 800px; height: 600px;">
+    @* loading document using javascrippt*@
+    @Html.TXTextControl().DocumentViewer(settings =>
+    {
+    settings.Dock = DocumentViewerSettings.DockStyle.Fill;
+    settings.IsSelectionActivated = true;
+    settings.ShowThumbnailPane = true;
+    }).Render()
+
+    <button onclick="LoadDocument()"
+            class="btn mt-3 btn-success">
+        Load Document
+    </button>
+
+
+
+</div>
+
+
+<script>
+    var jsonAnnotations = '[[{"pen":{"type":"comment","objectWidth":32,"objectHeight":32},"user":"Unknown User","location":{"x":127,"y":50},"time":1658908087097,"comments":[{"comment":"Welcome to Text Control","user":"Unknown User","date":1658908100339,"id":"c8d818ce-ff1e-4c0c-b78c-6ba95a98dede","status":"none"}],"id":"feed80ff-1c94-4abf-9838-3e833faa4092","status":"Accepted"}]]';
+    window.addEventListener("documentViewerLoaded", function () {
+        TXDocumentViewer.annotations.showToolbar(true);
+        TXDocumentViewer.annotations.load(jsonAnnotations);
+    });
+
+
+
+    function LoadDocument() {
+        $('.alert').show();
+
+        var bDocument;
+        var serviceURL = "@Url.Action("LoadDocument", "Home")";
+        // send document to controller
+        $.ajax({
+            type: "GET",
+            url: serviceURL,
+            success: successFunc,
+            error: errorFunc
+        });
+    }
+    function successFunc(data, status) {
+        TXDocumentViewer.loadDocument(data, "maram.txt");
+        TXDocumentViewer.toggleSidebar();
+        $('.alert').hide();
+    }
+    function errorFunc() {
+        alert("Error");
+    }
+</script>
