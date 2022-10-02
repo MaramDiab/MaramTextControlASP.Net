@@ -1,8 +1,13 @@
+using Microsoft.Extensions.FileProviders;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddSingleton<IFileProvider>(
+                new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(),
+                    "./ServerFiles")));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -24,6 +29,9 @@ app.UseStaticFiles(new StaticFileOptions
            "TXTextControl.Web")),
     RequestPath = "/TXTextControl.Web"
 });
+
+//
+
 
 // enable Web Sockets
 app.UseWebSockets();

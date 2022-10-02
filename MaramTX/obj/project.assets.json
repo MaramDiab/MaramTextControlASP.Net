@@ -2383,6 +2383,25 @@
           }
         }
       },
+      "TXTextControl.DocumentServices.DocumentViewer/2.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Html.Abstractions": "2.2.0",
+          "Microsoft.AspNetCore.Mvc.ViewFeatures": "2.2.0",
+          "Microsoft.AspNetCore.WebUtilities": "2.2.0",
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/TXTextControl.DocumentServices.DocumentViewer.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/TXTextControl.DocumentServices.DocumentViewer.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "TXTextControl.TextControl.ASP.SDK/31.0.0": {
         "type": "package",
         "dependencies": {
@@ -7473,6 +7492,21 @@
         "txtextcontrol.documentservices.documenteditor.nuspec"
       ]
     },
+    "TXTextControl.DocumentServices.DocumentViewer/2.0.2": {
+      "sha512": "9HskR/mF6M07+wLrOPQ4haIGPqZXC0jkUc2oDqp+Uvvl8wsAXaS36k5mc87Zhhds7IA+t2YZ+6dTP7IwkMEyNQ==",
+      "type": "package",
+      "path": "txtextcontrol.documentservices.documentviewer/2.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/netcoreapp3.1/TXTextControl.DocumentServices.DocumentViewer.dll",
+        "lib/netcoreapp3.1/TXTextControl.DocumentServices.DocumentViewer.xml",
+        "tx_ds.png",
+        "txtextcontrol.documentservices.documentviewer.2.0.2.nupkg.sha512",
+        "txtextcontrol.documentservices.documentviewer.nuspec"
+      ]
+    },
     "TXTextControl.TextControl.ASP.SDK/31.0.0": {
       "sha512": "RyGi7uoo/DEtkGlpbft1XWGv3lpKzUdqW7W2+OE+tDYY5L4RuU9HWE4Bj4C+d2x3jXdmu78So99gCLCc6TCrew==",
       "type": "package",
@@ -7632,6 +7666,7 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "TXTextControl.DocumentServices.DocumentEditor >= 2.0.0",
+      "TXTextControl.DocumentServices.DocumentViewer >= 2.0.2",
       "TXTextControl.TextControl.ASP.SDK >= 31.0.0",
       "TXTextControl.TextControl.WinForms.SDK >= 31.0.0",
       "TXTextControl.Web >= 31.0.0",
@@ -7688,6 +7723,10 @@
           "TXTextControl.DocumentServices.DocumentEditor": {
             "target": "Package",
             "version": "[2.0.0, )"
+          },
+          "TXTextControl.DocumentServices.DocumentViewer": {
+            "target": "Package",
+            "version": "[2.0.2, )"
           },
           "TXTextControl.TextControl.ASP.SDK": {
             "target": "Package",

@@ -92,3 +92,4 @@ C:\Users\user\source\repos\MaramTX\MaramTX\bin\Debug\net6.0\TXTextControl.Docume
 C:\Users\user\source\repos\MaramTX\MaramTX\bin\Debug\net6.0\TXDocumentServer.Windows.Forms.dll
 C:\Users\user\source\repos\MaramTX\MaramTX\bin\Debug\net6.0\TXTextControl.Windows.Forms.Design.dll
 C:\Users\user\source\repos\MaramTX\MaramTX\bin\Debug\net6.0\TXTextControl.Windows.Forms.dll
+C:\Users\user\source\repos\MaramTX\MaramTX\bin\Debug\net6.0\TXTextControl.DocumentServices.DocumentViewer.dll

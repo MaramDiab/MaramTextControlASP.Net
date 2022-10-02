@@ -1,0 +1,6 @@
+﻿namespace MaramTX.wwwroot
+{
+    public class test
+    {
+    }
+}

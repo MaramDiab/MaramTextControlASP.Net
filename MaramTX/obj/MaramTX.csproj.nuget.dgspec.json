@@ -50,6 +50,10 @@
               "target": "Package",
               "version": "[2.0.0, )"
             },
+            "TXTextControl.DocumentServices.DocumentViewer": {
+              "target": "Package",
+              "version": "[2.0.2, )"
+            },
             "TXTextControl.TextControl.ASP.SDK": {
               "target": "Package",
               "version": "[31.0.0, )"

@@ -9,6 +9,7 @@
       "MaramTX/1.0.0": {
         "dependencies": {
           "TXTextControl.DocumentServices.DocumentEditor": "2.0.0",
+          "TXTextControl.DocumentServices.DocumentViewer": "2.0.2",
           "TXTextControl.TextControl.ASP.SDK": "31.0.0",
           "TXTextControl.TextControl.WinForms.SDK": "31.0.0",
           "TXTextControl.Web": "31.0.0",
@@ -1145,6 +1146,20 @@
           "lib/netcoreapp3.1/TXTextControl.DocumentServices.DocumentEditor.dll": {
             "assemblyVersion": "2.0.0.0",
             "fileVersion": "2.0.0.0"
+          }
+        }
+      },
+      "TXTextControl.DocumentServices.DocumentViewer/2.0.2": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Html.Abstractions": "2.2.0",
+          "Microsoft.AspNetCore.Mvc.ViewFeatures": "2.2.0",
+          "Microsoft.AspNetCore.WebUtilities": "2.2.0",
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/TXTextControl.DocumentServices.DocumentViewer.dll": {
+            "assemblyVersion": "2.0.2.0",
+            "fileVersion": "2.0.2.0"
           }
         }
       },
@@ -2355,6 +2370,13 @@
       "sha512": "sha512-d2ZIYvO5dbcAL6Nnh9H1G2ZRR4vMuKdh3KxJ4apLe9tfltzeIs11l0PiTW/g/iWCvgJpU1QuuvNshC1neu08pQ==",
       "path": "txtextcontrol.documentservices.documenteditor/2.0.0",
       "hashPath": "txtextcontrol.documentservices.documenteditor.2.0.0.nupkg.sha512"
+    },
+    "TXTextControl.DocumentServices.DocumentViewer/2.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9HskR/mF6M07+wLrOPQ4haIGPqZXC0jkUc2oDqp+Uvvl8wsAXaS36k5mc87Zhhds7IA+t2YZ+6dTP7IwkMEyNQ==",
+      "path": "txtextcontrol.documentservices.documentviewer/2.0.2",
+      "hashPath": "txtextcontrol.documentservices.documentviewer.2.0.2.nupkg.sha512"
     },
     "TXTextControl.TextControl.ASP.SDK/31.0.0": {
       "type": "package",

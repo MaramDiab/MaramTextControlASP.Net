@@ -4,7 +4,9 @@
 @using System.Text
 @using MaramTX.Controllers
 
-
+@Html.TXTextControl().TextControl(settings => {
+	settings.WebSocketURL="wss://backend.textcontrol.com?access-token=h4CVCxoW9UANqceWL4qk";
+}).Render()
 
 
 @Html.TXTextControl().TextControl(settings =>
@@ -12,44 +14,27 @@
     
     settings.Dock = DockStyle.Fill;
 }).LoadText("C:/Users/user/source/repos/MaramTX/MaramTX/wwwroot/maramtest.txt",
-    StreamType.WordprocessingML).Render()
+    StreamType.PlainText).Render()
 
 <button onclick="ExportPDF()" class="btn mt-3 btn-success">Export PDF</button>
 <script>
     function ExportPDF() {
-        debugger
-        var bDocument;
-        var serviceURL = "@Url.Action("ExportPDF", "Home")";
+
         // save document
-        TXTextControl.saveDocument(TXTextControl.StreamType.InternalUnicodeFormat, function (e) {
-            bDocument = e.data;
-            // send document to controller
-            $.ajax({
-                type: "POST",
-                url: serviceURL,
-                data: {
-                    document: e.data
-                },
-                success: successFunc,
-                error: errorFunc
-            });
+        TXTextControl.saveDocument(TXTextControl.StreamType.AdobePDF, function (e) {
+            // create temporary link element
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:application/octet-stream;base64,' + e.data);
+            element.setAttribute('download', "test.pdf");
+
+            element.style.display = 'none';
+            document.body.appendChild(element);
+
+            // simulate click
+            element.click();
+
+            // remove the link
+            document.body.removeChild(element);
         });
     }
-    function successFunc(data, status) {
-        // create temporary link to download document
-        var element = document.createElement('a');
-        element.setAttribute('href', 'data:application/octet-stream;base64,' + data);
-        element.setAttribute('download', "test.pdf");
-        element.style.display = 'none';
-        document.body.appendChild(element);
-        // simulate click
-        element.click();
-        // remove the link
-        document.body.removeChild(element);
-    }
-    function errorFunc() {
-        alert("Error");
-    }
-
-
 </script>

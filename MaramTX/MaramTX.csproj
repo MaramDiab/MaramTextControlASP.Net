@@ -7,8 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\A.svg.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="jQuery" Version="1.4.4" />
     <PackageReference Include="TXTextControl.DocumentServices.DocumentEditor" Version="2.0.0" />
+    <PackageReference Include="TXTextControl.DocumentServices.DocumentViewer" Version="2.0.2" />
     <PackageReference Include="TXTextControl.TextControl.ASP.SDK" Version="31.0.0" />
     <PackageReference Include="TXTextControl.TextControl.WinForms.SDK" Version="31.0.0" />
     <PackageReference Include="TXTextControl.Web" Version="31.0.0" />
@@ -16,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ServerFiles\" />
     <Folder Include="UploadedFiles\" />
   </ItemGroup>
 
