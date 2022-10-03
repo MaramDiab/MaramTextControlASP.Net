@@ -1,0 +1,14 @@
+﻿@using TXTextControl.Web.MVC.DocumentViewer
+
+@Html.TXTextControl().DocumentViewer(settings => {
+    settings.DocumentPath = ("C:/Users/user/source/repos/MaramTX/MaramTX/wwwroot/maramtest.txt");
+    settings.Dock = DocumentViewerSettings.DockStyle.Window;
+    settings.IsSelectionActivated = true;
+    settings.ShowThumbnailPane = true;
+    settings.UserNames = new string[] { Guid.NewGuid().ToString() };
+  
+
+}).Render()
+
+<script src="~/lib/microsoft-signalr/signalr.js"></script>
+<script src="~/js/collab.js"></script>

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "CqPp2JwP4n+7s2rnprWyzTHje5qG2KgeFErbad3yH1s=",
+  "Hash": "m6YP+00zAy7OrRi2XhxmgNtsFWPI23Mv2KzHd9icFw8=",
   "Source": "MaramTX",
   "BasePath": "_content/MaramTX",
   "Mode": "Default",
@@ -100,6 +100,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\user\\source\\repos\\MaramTX\\MaramTX\\wwwroot\\js\\collab.js",
+      "SourceId": "MaramTX",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\user\\source\\repos\\MaramTX\\MaramTX\\wwwroot\\",
+      "BasePath": "_content/MaramTX",
+      "RelativePath": "js/collab.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\collab.js"
     },
     {
       "Identity": "C:\\Users\\user\\source\\repos\\MaramTX\\MaramTX\\wwwroot\\js\\jquery.js",
@@ -1120,6 +1137,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\user\\source\\repos\\MaramTX\\MaramTX\\wwwroot\\lib\\microsoft-signalr\\signalr.js",
+      "SourceId": "MaramTX",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\user\\source\\repos\\MaramTX\\MaramTX\\wwwroot\\",
+      "BasePath": "_content/MaramTX",
+      "RelativePath": "lib/microsoft-signalr/signalr.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\microsoft-signalr\\signalr.js"
+    },
+    {
+      "Identity": "C:\\Users\\user\\source\\repos\\MaramTX\\MaramTX\\wwwroot\\lib\\microsoft-signalr\\signalr.min.js",
+      "SourceId": "MaramTX",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\user\\source\\repos\\MaramTX\\MaramTX\\wwwroot\\",
+      "BasePath": "_content/MaramTX",
+      "RelativePath": "lib/microsoft-signalr/signalr.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\microsoft-signalr\\signalr.min.js"
     },
     {
       "Identity": "C:\\Users\\user\\source\\repos\\MaramTX\\MaramTX\\wwwroot\\lib\\TextFile.txt",

@@ -136,7 +136,10 @@ namespace MaramTX.Controllers
 
         }
 
-
+public IActionResult Hub()
+        {
+            return View();
+        }
 
     }
 }
