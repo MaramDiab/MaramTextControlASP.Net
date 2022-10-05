@@ -1,0 +1,57 @@
+﻿@using TXTextControl.Web.MVC
+@using TXTextControl.Web
+@using System.Text
+@using MaramTX.Controllers
+
+@Html.TXTextControl().TextControl(settings => {
+	settings.WebSocketURL="wss://backend.textcontrol.com?access-token=h4CVCxoW9UANqceWL4qk";
+}).Render()
+@*@Html.TXTextControl().TextControl(settings =>
+    {
+        settings.Dock = DockStyle.Fill;
+    }).Render()
+<div class="tx-container">
+    @Html.TXTextControl().TextControl(settings => {
+    settings.Dock = DockStyle.Fill;
+    }).LoadText("C:/Users/user/source/repos/MaramTX/MaramTX/wwwroot/vendor.tx",
+    StreamType.PlainText).Render()
+</div>*@
+
+<div class="alert alert-info mt-3" role="alert">
+    Please set the input position into a table of contents area.
+</div>
+
+<button onclick="updateTOC()" class="btn mt-3 btn-success">Update Table of Contents</button>
+<button onclick="changeTOCTitle()" class="btn mt-3 btn-success">Update Title</button>
+
+<script>
+
+
+    TXTextControl.addEventListener("ribbonTabsLoaded", function () {
+        TXTextControl.ribbon.selectedTab = "tabReferences";
+    });
+
+    function updateTOC() {
+        TXTextControl.tablesOfContents.forEach(function (toc) {
+            if (toc != null) {
+                toc.update();
+            }
+        })
+    }
+
+    function changeTOCTitle() {
+        TXTextControl.tablesOfContents.getItem(function (toc) {
+            if (toc != null) {
+                toc.setTitle("New TOC Title");
+            }
+            else {
+                $('.alert').show().delay(3000).fadeOut(300);
+            }
+        })
+    }
+
+
+
+
+
+</script>

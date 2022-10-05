@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "m6YP+00zAy7OrRi2XhxmgNtsFWPI23Mv2KzHd9icFw8=",
+  "Hash": "2318jQ4xOsCIwtfwgKhGqrlIBniwhVi2jZ3lDJ2OSmI=",
   "Source": "MaramTX",
   "BasePath": "_content/MaramTX",
   "Mode": "Default",
@@ -66,6 +66,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\A.svg.png"
+    },
+    {
+      "Identity": "C:\\Users\\user\\source\\repos\\MaramTX\\MaramTX\\wwwroot\\Cash-Flow.xlsx",
+      "SourceId": "MaramTX",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\user\\source\\repos\\MaramTX\\MaramTX\\wwwroot\\",
+      "BasePath": "_content/MaramTX",
+      "RelativePath": "Cash-Flow.xlsx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Cash-Flow.xlsx"
     },
     {
       "Identity": "C:\\Users\\user\\source\\repos\\MaramTX\\MaramTX\\wwwroot\\css\\site.css",
@@ -1241,6 +1258,23 @@
       "OriginalItemSpec": "wwwroot\\test.txt"
     },
     {
+      "Identity": "C:\\Users\\user\\source\\repos\\MaramTX\\MaramTX\\wwwroot\\Test.xml",
+      "SourceId": "MaramTX",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\user\\source\\repos\\MaramTX\\MaramTX\\wwwroot\\",
+      "BasePath": "_content/MaramTX",
+      "RelativePath": "Test.xml",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Test.xml"
+    },
+    {
       "Identity": "C:\\Users\\user\\source\\repos\\MaramTX\\MaramTX\\wwwroot\\textcontrolself.pfx",
       "SourceId": "MaramTX",
       "SourceType": "Discovered",
@@ -1273,6 +1307,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\textcontrolself.pfx.txt"
+    },
+    {
+      "Identity": "C:\\Users\\user\\source\\repos\\MaramTX\\MaramTX\\wwwroot\\vendor.tx",
+      "SourceId": "MaramTX",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\user\\source\\repos\\MaramTX\\MaramTX\\wwwroot\\",
+      "BasePath": "_content/MaramTX",
+      "RelativePath": "vendor.tx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\vendor.tx"
     }
   ]
 }

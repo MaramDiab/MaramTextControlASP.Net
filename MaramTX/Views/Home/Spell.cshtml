@@ -1,0 +1,39 @@
+﻿@using TXTextControl.Web
+@using TXTextControl.Web.MVC
+@using System.Text
+@using MaramTX.Controllers
+@Html.TXTextControl().TextControl(settings => {
+	settings.WebSocketURL="wss://backend.textcontrol.com?access-token=h4CVCxoW9UANqceWL4qk";
+}).Render()
+
+@Html.TXTextControl().TextControl(settings =>
+{
+    settings.Dock = DockStyle.Fill;
+}).LoadText("C:/Users/user/source/repos/MaramTX/MaramTX/wwwroot/maramtest.txt",
+    StreamType.PlainText).Render()
+
+<button onclick="SpellChecking()" class="btn mt-3 btn-success">Spell Checking</button>
+<button onclick="Thesaurus()" class="btn mt-3 btn-success">Thesaurus</button>
+
+<script>
+
+    TXTextControl.addEventListener("textControlLoaded", function () {
+        // Enable Spellchecking
+        TXTextControl.isSpellCheckingEnabled = true;
+    });
+
+    function SpellChecking() {
+        TXTextControl.enableCommands();
+        TXTextControl.sendCommand(TXTextControl.Command.ShowDialog,
+            TXTextControl.DialogCategory.HTMLDialog,
+            TXTextControl.HTMLDialogType.SpellCheckDialog);
+    }
+
+    function Thesaurus() {
+        TXTextControl.enableCommands();
+        TXTextControl.sendCommand(TXTextControl.Command.ShowDialog,
+            TXTextControl.DialogCategory.HTMLDialog,
+            TXTextControl.HTMLDialogType.ThesaurusDialog);
+    }
+
+</script>

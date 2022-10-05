@@ -9,15 +9,30 @@
 }).Render()
 
 
-@Html.TXTextControl().TextControl(settings =>
-{
-    
-    settings.Dock = DockStyle.Fill;
-}).LoadText("C:/Users/user/source/repos/MaramTX/MaramTX/wwwroot/maramtest.txt",
-    StreamType.PlainText).Render()
 
-<button onclick="ExportPDF()" class="btn mt-3 btn-success">Export PDF</button>
+
+<button id="btnSelect" onclick="ExportPDF()" class="btn mt-3 btn-success">Export PDF</button>
+<button id="btnSelect" onclick="ExportWord()" class="btn mt-3 btn-success">Export word</button>
+<button id="btnSelect" onclick="ExportExcel()" class="btn mt-3 btn-success">Export xlsx</button>
+<button onclick="ExportPowerpoint()" class="btn mt-3 btn-success">Export ppt</button>
 <script>
+    var filename;
+    $("#btnSelect").click(function () {
+
+        var $input = $('<input type="file" />');
+        $input.change(function () {
+            var str = $(this).val().toString();
+            var arr = str.split("\\");
+            var len = arr.length;
+            filename = arr[len - 1];
+         
+        });
+        $input.trigger('click');
+    });
+    var name = filename.split(".");
+
+
+
     function ExportPDF() {
 
         // save document
@@ -25,7 +40,7 @@
             // create temporary link element
             var element = document.createElement('a');
             element.setAttribute('href', 'data:application/octet-stream;base64,' + e.data);
-            element.setAttribute('download', "test.pdf");
+            element.setAttribute('download', name[0]+".pdf");
 
             element.style.display = 'none';
             document.body.appendChild(element);
@@ -37,4 +52,74 @@
             document.body.removeChild(element);
         });
     }
+
+
+
+    function ExportWord() {
+
+        // save document
+        TXTextControl.saveDocument(TXTextControl.StreamType.AdobePDF, function (e) {
+            // create temporary link element
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:application/octet-stream;base64,' + e.data);
+            element.setAttribute('download', "test.docx");
+
+            element.style.display = 'none';
+            document.body.appendChild(element);
+
+            // simulate click
+            element.click();
+
+            // remove the link
+            document.body.removeChild(element);
+        });
+    }
+
+    function ExportExcel() {
+
+        // save document
+        TXTextControl.saveDocument(TXTextControl.StreamType.AdobePDF, function (e) {
+            // create temporary link element
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:application/octet-stream;base64,' + e.data);
+            element.setAttribute('download', "test.xlsx");
+
+            element.style.display = 'none';
+            document.body.appendChild(element);
+
+            // simulate click
+            element.click();
+
+            // remove the link
+            document.body.removeChild(element);
+        });
+    }
+
+
+    function ExportPowerpoint() {
+
+        // save document
+        TXTextControl.saveDocument(TXTextControl.StreamType.AdobePDF, function (e) {
+            // create temporary link element
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:application/octet-stream;base64,' + e.data);
+            element.setAttribute('download', "test.ppt");
+
+            element.style.display = 'none';
+            document.body.appendChild(element);
+
+            // simulate click
+            element.click();
+
+            // remove the link
+            document.body.removeChild(element);
+        });
+    }
+
+
+
+
+
+
+
 </script>

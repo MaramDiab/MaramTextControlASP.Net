@@ -1,0 +1,31 @@
+﻿@using TXTextControl.Web
+@using TXTextControl.Web.MVC
+@using System.Text
+@using MaramTX.Controllers
+@Html.TXTextControl().TextControl(settings => {
+	settings.WebSocketURL="wss://backend.textcontrol.com?access-token=h4CVCxoW9UANqceWL4qk";
+}).Render()
+
+@Html.TXTextControl().TextControl(settings =>
+{
+    settings.Dock = DockStyle.Fill;
+}).LoadText("C:/Users/user/source/repos/MaramTX/MaramTX/wwwroot/vendor.tx",
+    StreamType.InternalUnicodeFormat).Render()
+    <script>
+    TXTextControl.addEventListener("ribbonTabsLoaded", function () {
+        var curBackgroundColor = $("#ribbonGroupEditing").css("background-color");
+
+        $("#ribbonGroupEditing").css("transition", "background-color 1s");
+        $("#ribbonGroupEditing").css("background-color", "red");
+
+        setTimeout(function () {
+            $("#ribbonGroupEditing").css("background-color", curBackgroundColor);
+        }, 5000);
+
+        TXTextControl.enableCommands();
+        TXTextControl.sendCommand(TXTextControl.Command.ShowDialog,
+            TXTextControl.DialogCategory.TXDialog,
+            TXTextControl.TXDialogType.ReplaceDialog)
+    });
+
+    </script>

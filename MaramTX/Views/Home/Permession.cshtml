@@ -1,5 +1,44 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+﻿@*@using TXTextControl.Web.MVC
+@using TXTextControl.Web
+@using System.Text
+@using MaramTX.Controllers
+
+
+
+<div class="tx-container">
+    @{
+        var user = (Request["user"] == null)
+        ? "development@textcontrol.com" : Request["user"];
+    }
+
+    @Html.TXTextControl().TextControl(settings => {
+    settings.WebSocketURL="wss://backend.textcontrol.com?access-token=h4CVCxoW9UANqceWL4qk";
+    settings.ServiceAddress = IPAddress.Parse(System.Configuration.ConfigurationManager.AppSettings["ServiceAddress"]);
+    settings.Dock = DockStyle.Fill;
+    settings.UserNames = new string[] { user };
+    settings.EditMode = EditMode.ReadOnly | EditMode.UsePassword;
+
+    }).LoadText("C:/Users/user/source/repos/MaramTX/MaramTX/wwwroot/maramtest.txt"),StreamType.MSWord).Render()
+
+
+    
+
+</div>
+
+<div class="form-group col-lg-5 mt-3">
+    <p>Current user: <strong>@user</strong></p>
+    <select class="form-control mt-3" id="users">
+        <option value="qa@textcontrol.com">qa@textcontrol.com</option>
+        <option value="development@textcontrol.com">development@textcontrol.com</option>
+    </select>
+    <button onclick="ReloadWithUser()" class="btn btn-success mt-3">Set User</button>
+</div>
+<script>
+
+    function ReloadWithUser() {
+        window.location = document.location.origin +
+            document.location.pathname +
+            "?user=" + document.getElementById("users").value;
+    }
+</script>
 *@
-@{
-}

@@ -1,0 +1,27 @@
+﻿@using TXTextControl.Web.MVC.DocumentViewer
+
+<div class="tx-container">
+    @Html.TXTextControl().DocumentViewer(settings => {
+         settings.DocumentPath = ("C:/Users/user/source/repos/MaramTX/MaramTX/wwwroot/vendor.tx");
+        settings.Dock = DocumentViewerSettings.DockStyle.Fill;
+        settings.IsSelectionActivated = false;
+        settings.ShowThumbnailPane = true;
+    }).Render()
+</div>
+
+<button onclick="exportFormValues()" class="btn mt-3 btn-success">Export Form Values</button>
+<button onclick="downloadPDF()" class="btn mt-3 btn-success">Download PDF</button>
+@*<textarea rows="10" id="taAnnotations"></textarea*@
+
+    <script src="~/js/jquery.js"></script>
+<script>
+    function exportFormValues() {
+        $("#taAnnotations").val(JSON.stringify(TXDocumentViewer.forms.getValues()));
+    }
+
+    function downloadPDF() {
+        TXDocumentViewer.downloadDocument(TXDocumentViewer.StreamType.AdobePDF, true);
+    }
+
+
+</script>

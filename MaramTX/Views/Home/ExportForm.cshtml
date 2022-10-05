@@ -1,0 +1,61 @@
+﻿@using TXTextControl.Web.MVC
+@using TXTextControl.Web
+@using System.Text
+@using MaramTX.Controllers
+
+
+
+<div class="tx-container">
+    @Html.TXTextControl().TextControl(settings => {
+    settings.WebSocketURL="wss://backend.textcontrol.com?access-token=h4CVCxoW9UANqceWL4qk";
+    }).Render()
+
+  
+</div>
+<div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="cbIsProtected">
+    <label class="form-check-label" for="cbIsProtected">Is protected?</label>
+</div>
+
+<button onclick="ExportProtectedPDF()" class="btn btn-success">Export to PDF</button>
+<script src="~/js/jquery.js"></script>
+
+<script>
+    function ExportProtectedPDF() {
+
+        var bDocument;
+        var serviceURL = "@Url.Action("ExportProtectedPDF", "Home")";
+        var protected = $("#cbIsProtected").is(":checked");
+        console.log(protected);
+        // save document
+        TXTextControl.saveDocument(TXTextControl.StreamType.InternalUnicodeFormat, function (e) {
+            bDocument = e.data;
+            // send document to controller
+            $.ajax({
+                type: "POST",
+                url: serviceURL,
+                data: {
+                    document: e.data,
+                    isProtected: protected
+                },
+                success: successFunc,
+                error: errorFunc
+            });
+        });
+    }
+    function successFunc(data, status) {
+        // create temporary link to download document
+        var element = document.createElement('a');
+        element.setAttribute('href', 'data:application/octet-stream;base64,' + data);
+        element.setAttribute('download', "test.pdf");
+        element.style.display = 'none';
+        document.body.appendChild(element);
+        // simulate click
+        element.click();
+        // remove the link
+        document.body.removeChild(element);
+    }
+    function errorFunc() {
+        alert("Error");
+    }
+</script>

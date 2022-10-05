@@ -10,22 +10,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MaramTX
-{
-    public class Program
-    {
-  
-public static void Main(string[] args)
-        {
 
 
-            CreateHostBuilder(args).Build().Run();
 
 
-            var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-            builder.Services.AddControllersWithViews();
+
+    var builder = WebApplication.CreateBuilder(args);
+
+    // Add services to the container.
+    builder.Services.AddControllersWithViews();
             builder.Services.AddSingleton<IFileProvider>(
                             new PhysicalFileProvider(
                                 Path.Combine(Directory.GetCurrentDirectory(),
@@ -40,55 +34,70 @@ public static void Main(string[] args)
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
-            // serve static linked files (JavaScript and CSS for the editor)
-            app.UseStaticFiles(new StaticFileOptions
-            {
-                FileProvider = new Microsoft.Extensions.FileProviders.PhysicalFileProvider(
-                   System.IO.Path.Combine(System.IO.Path.GetDirectoryName(
-                       System.Reflection.Assembly.GetEntryAssembly().Location),
-                       "TXTextControl.Web")),
-                RequestPath = "/TXTextControl.Web"
-            });
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+// serve static linked files (JavaScript and CSS for the editor)
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new Microsoft.Extensions.FileProviders.PhysicalFileProvider(
+       System.IO.Path.Combine(System.IO.Path.GetDirectoryName(
+           System.Reflection.Assembly.GetEntryAssembly().Location),
+           "TXTextControl.Web")),
+    RequestPath = "/TXTextControl.Web"
+});
 
-            //
-
-
-            // enable Web Sockets
-            app.UseWebSockets();
-
-            // attach the Text Control WebSocketHandler middleware
-            app.UseMiddleware<TXTextControl.Web.WebSocketMiddleware>();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
-            //app.UseEndpoints(endpoints => {
-            //    endpoints.MapControllerRoute(
-            //         name: "default",
-            //         pattern: "{controller=Home}/{action=Index}/{id?}");
-
-            //    endpoints.MapHub<CollabHub>("/Hub");
-            //});
-            app.Run();
+//
 
 
+// enable Web Sockets
+app.UseWebSockets();
+
+// attach the Text Control WebSocketHandler middleware
+app.UseMiddleware<TXTextControl.Web.WebSocketMiddleware>();
+
+app.UseRouting();
+
+app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+//app.UseEndpoints(endpoints => {
+//    endpoints.MapControllerRoute(
+//         name: "default",
+//         pattern: "{controller=Home}/{action=Index}/{id?}");
+
+//    endpoints.MapHub<CollabHub>("/Hub");
+//});
+app.Run();
+Host.CreateDefaultBuilder(args)
+          .ConfigureWebHostDefaults(webBuilder =>
+          {
+              webBuilder.UseStartup<Startup>();
+          }).Build().Run();
+//    public class Program
+//    {
+
+//public static void Main(string[] args)
+//        {
+
+
+
+
+//            //CreateHostBuilder(args).Build().Run();
 
 
 
 
 
-        }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-             Host.CreateDefaultBuilder(args)
-                  .ConfigureWebHostDefaults(webBuilder => {
-                      webBuilder.UseStartup<Startup>();
-                  });
-    }
-}
+//        }
+
+//public static IHostBuilder CreateHostBuilder(string[] args) =>
+//     Host.CreateDefaultBuilder(args)
+//          .ConfigureWebHostDefaults(webBuilder =>
+//          {
+//              webBuilder.UseStartup<Startup>();
+//          });
+//   }
+//}

@@ -1,0 +1,79 @@
+﻿@using TXTextControl.Web
+@using TXTextControl.Web.MVC
+@using System.Text
+@using MaramTX.Controllers
+@Html.TXTextControl().TextControl(settings => {
+	settings.WebSocketURL="wss://backend.textcontrol.com?access-token=h4CVCxoW9UANqceWL4qk";
+}).Render()
+<div class="row">
+
+    <div class="col-12">
+        <div class="tx-container demo">
+
+            @{
+                @Html.TXTextControl().TextControl(settings =>
+            {
+            settings.Dock = DockStyle.Fill;
+            }).LoadText("C:/Users/user/source/repos/MaramTX/MaramTX/wwwroot/Test.xml",
+            StreamType.XMLFormat).LoadXMLDatabase("C://Users//user//source//repos//MaramTX//MaramTX//wwwroot/Test.xml").Render()
+            }
+
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="form-group col-lg-5">
+        <button onclick="MergeTemplate()" class="btn btn-success">Merge Template</button>
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-12">
+
+        <p>Merged document:</p>
+
+        <div class="tx-container demo">
+            @{
+                //@RenderPage("~/Documentation/RichTextEditor/Partial-Viewer.cshtml")
+            }
+        </div>
+    </div>
+
+</div>
+<script>
+
+    function MergeTemplate() {
+        var bDocument;
+        var serviceURL = "@Url.Action("MergeFormula", "Home")";
+        // save document
+        TXTextControl.saveDocument(TXTextControl.StreamType.InternalUnicodeFormat, function (e) {
+            bDocument = e.data;
+            // send document to controller
+            $.ajax({
+                type: "POST",
+                url: serviceURL,
+                data: {
+                    document: e.data
+                },
+                success: successFunc,
+                error: errorFunc
+            });
+        });
+    }
+    function successFunc(data, status) {
+        TXDocumentViewer.loadDocument(data, "merged.tx");
+        TXDocumentViewer.toggleSidebar();
+        TXDocumentViewer.lockZoom();
+    }
+    function errorFunc() {
+        alert("Error");
+    }
+
+
+</script>
+

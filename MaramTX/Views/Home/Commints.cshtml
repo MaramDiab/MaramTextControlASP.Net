@@ -1,0 +1,27 @@
+﻿@using TXTextControl.Web.MVC
+@using TXTextControl.Web
+@using System.Text
+@using MaramTX.Controllers
+@Html.TXTextControl().TextControl(settings => {
+	settings.WebSocketURL="wss://backend.textcontrol.com?access-token=h4CVCxoW9UANqceWL4qk";
+}).Render()
+@Html.TXTextControl().TextControl(settings => {
+       settings.Dock = DockStyle.Fill;
+       settings.UserNames = new string[] { "Tim Typer" };
+   }).LoadText("C:/Users/user/source/repos/MaramTX/MaramTX/wwwroot/maramtest.txt",
+            StreamType.PlainText).Render()
+<script src="~/js/jquery.js"></script>
+            <script>
+
+    TXTextControl.addEventListener("ribbonTabsLoaded", function () {
+        $("#tabFile").parent().remove();
+        TXTextControl.showSideBar(TXTextControl.SideBarType.Comments, true);
+    });
+
+    TXTextControl.addEventListener("documentLoaded", function () {
+        TXTextControl.comments.getNextItem(function (comment) { comment.scrollTo(); });
+    });
+
+
+
+            </script>

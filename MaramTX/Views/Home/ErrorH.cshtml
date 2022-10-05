@@ -1,0 +1,73 @@
+﻿@using TXTextControl.Web.MVC
+@using TXTextControl.Web
+@using System.Text
+@using MaramTX.Controllers
+
+@Html.TXTextControl().TextControl(settings => {
+	settings.WebSocketURL="wss://backend.textcontrol.com?access-token=h4CVCxoW9UANqceWL4qk";
+}).Render()
+<!-- Info area -->
+<div class="alert alert-info mt-3" role="alert"></div>
+
+<!--- CheckBoxes --->
+
+<div class="form-group mt-3">
+    <div class="form-check">
+        <label class="form-check-label">
+            <input id="cbCatchErrorsOnAction" autocomplete="off" onclick="CauseAsyncError()" class="form-check-input" type="checkbox" checked> Catch <strong>errors on action</strong>
+        </label>
+    </div>
+    <div class="form-check">
+        <label class="form-check-label">
+            <input id="cbCatchErrorsOnUnhandledErrorEvent" autocomplete="off" onclick="CauseAsyncError()" class="form-check-input" type="checkbox"> Catch <strong>unhandled errors</strong>
+        </label>
+    </div>
+</div>
+
+<!--- Buttons --->
+<button onclick="CauseAsyncError()" class="btn mt-3 btn-success">Cause error</button>
+<script src="~/js/jquery.js"></script>
+<script>
+    TXTextControl.addEventListener("textControlLoaded", function () {
+        TXTextControl.addEventListener("unhandledError", function (errArg) {
+
+            if (document.getElementById("cbCatchErrorsOnUnhandledErrorEvent").checked) {
+                // Last chance to catch the error by setting
+                errArg.handled = true;
+
+                $('.alert-info').text("Error catched on 'unhandledError' event.").show().delay(5000).fadeOut();
+            } else {
+
+                // Else the error will be thrown.
+                $('.alert-info').text("Error not catched.").show().delay(5000).fadeOut();
+            }
+
+        });
+    });
+
+    function CauseAsyncError() {
+
+        // This is an invalid id which cause an exception
+        // which can be handled by using an ErrorCallback
+        // or assigning an event for 'unhandledError'-events.
+        var id = -1;
+        TXTextControl.tables.add(5, 5, id
+
+            // on success callback
+            , function (added) { }
+
+            // on error callback
+            , function (errArg) {
+
+                if (document.getElementById("cbCatchErrorsOnAction").checked) {
+                    // Catch the error here by setting
+                    errArg.handled = true;
+
+                    $('.alert-info').text("Error catched on action.").show().delay(5000).fadeOut();
+                }
+
+                // Else an 'unhandledError' event will be fired.
+            }
+        );
+    }
+</script>

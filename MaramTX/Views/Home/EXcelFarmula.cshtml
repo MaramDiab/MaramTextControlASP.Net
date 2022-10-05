@@ -1,0 +1,41 @@
+﻿@using TXTextControl.Web.MVC
+@using TXTextControl.Web
+@using System.Text
+@using MaramTX.Controllers
+
+
+@Html.TXTextControl().TextControl(settings => {
+	settings.WebSocketURL="wss://backend.textcontrol.com?access-token=h4CVCxoW9UANqceWL4qk";
+}).Render()
+
+    @Html.TXTextControl().TextControl(settings =>
+        {
+            settings.Dock = DockStyle.Fill;
+        }).LoadText("C:/Users/user/source/repos/MaramTX/MaramTX/wwwroot/Cash-Flow.xlsx",
+            StreamType.SpreadsheetML).Render()
+
+
+            <script>
+
+    TXTextControl.addEventListener("documentLoaded", documentLoadedHandler);
+
+    TXTextControl.addEventListener("ribbonTabsLoaded", function () {
+        $("#tabFile").parent().remove();
+        $("#ribbonTabInsert_btnInsertFile").remove();
+        $("#ribbonTabReports_btnLoadDBScheme").remove();
+    });
+
+    function documentLoadedHandler() {
+        $("#tabFormula").addClass("selected");
+        $("#ribbonTabHome").css("display", "none");
+        $("#ribbonTabFormula").css("display", "inline-block");
+
+        setTimeout(function () {
+            var sel = TXTextControl.selection;
+            var bounds = { "start": 299, "length": 0 };
+            sel.setBounds(bounds);
+        }, 500);
+    }
+
+
+            </script>
