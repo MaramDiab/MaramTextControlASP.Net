@@ -231,8 +231,19 @@ namespace MaramTX.Controllers
             return View();
         }
 
+        public IActionResult TrackedChanges()
+        {
+            return View();
+        }
 
-
+        public IActionResult Sign()
+        {
+            return View();
+        }
+        public IActionResult SignE()
+        {
+            return View();
+        }
 
 
 

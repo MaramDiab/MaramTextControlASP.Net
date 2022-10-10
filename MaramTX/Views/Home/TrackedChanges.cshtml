@@ -1,0 +1,94 @@
+﻿@using TXTextControl.Web.MVC
+@using TXTextControl.Web
+@using System.Text
+@using MaramTX.Controllers
+
+@Html.TXTextControl().TextControl(settings => {
+	settings.WebSocketURL="wss://backend.textcontrol.com?access-token=h4CVCxoW9UANqceWL4qk";
+	
+}).Render()
+<button onclick="ReloadWithUser()">set user  </button>
+<button onclick="StartOver()">   start over </button>
+	@*  @{ 
+    var user = 
+        "qa@textcontrol.com" ;
+
+    if (user == null)
+    {
+    @Html.TXTextControl().TextControl(settings =>
+        {
+            settings.Dock = DockStyle.Fill;
+         
+        }).LoadText("C:/Users/user/source/repos/MaramTX/MaramTX/wwwroot/maramtest.txt",
+            StreamType.PlainText).Render()
+
+    <script>
+                isReloaded = false;
+    </script>
+   }
+    else
+    {
+    @Html.TXTextControl().TextControl(settings =>
+        {
+            settings.Dock = DockStyle.Fill;
+            settings.UserNames = new string[] { user };
+        }).Render()
+    }
+                      *@                                       }
+<script>
+
+
+
+TXTextControl.addEventListener("textControlLoaded", loadedHandler);
+
+function loadedHandler() {
+    if (isReloaded == true) {
+        var document = localStorage.getItem('document');
+
+        if (document != null) {
+            TXTextControl.loadDocument(TXTextControl.StreamType.InternalUnicodeFormat, document);
+        }
+    }
+}
+
+TXTextControl.addEventListener("ribbonTabsLoaded", function () {
+    $("#tabFile").parent().remove();
+    $("#ribbonTabInsert_btnInsertFile").remove();
+    $("#ribbonTabReports_btnLoadDBScheme").remove();
+
+    TXTextControl.ribbon.selectedTab = "tabProofing";
+
+    TXTextControl.isTrackChangesEnabled = true;
+    TXTextControl.showSideBar(TXTextControl.SideBarType.TrackChanges, 1);
+});
+
+    function ReloadWithUser() {
+        console.log("reload with user ");
+        textControl1.UserNames = new string[] { "developer@textcontrol.com", "qa@textcontrol.com" };
+    }
+
+    TXTextControl.saveDocument(TXTextControl.StreamType.InternalUnicodeFormat, function (e) {
+        localStorage.setItem('document', e.data);
+     
+        window.location = document.location.origin +
+            document.location.pathname +
+                "qa@textcontrol.com";
+    });
+}
+
+function StartOver() {
+        console.log("startover");
+    localStorage.removeItem('document');
+
+    window.location = document.location.origin +
+        document.location.pathname;
+}
+
+
+
+
+
+
+
+
+</script>

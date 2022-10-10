@@ -1,0 +1,57 @@
+﻿
+
+@using TXTextControl.Web.MVC.DocumentViewer
+
+@Html.TXTextControl().DocumentViewer(settings =>
+{ settings.DocumentPath = "C:/Users/user/source/repos/MaramTX/MaramTX/wwwroot/lease_agreement.tx";
+    settings.Dock = DocumentViewerSettings.DockStyle.Fill;
+    settings.IsSelectionActivated = false;
+    settings.ShowThumbnailPane = true;
+    settings.SignatureSettings = new SignatureSettings() {
+    ShowSignatureBar = true,
+    OwnerName = "Maram Diab",
+    SignerName = "Wajeeh",
+    SignerInitials = "WJ",
+    SignatureBoxName = "txsign",
+    //UniqueId = uniqueID,
+   // RedirectUrlAfterSignature = this.Url.Action("ExportPDF", "Home", null, Request.Url.Scheme, null),
+    SignatureBoxes = new SignatureBox[] {
+    new SignatureBox("txsign") { SigningRequired = true, Style = SignatureBox.SignatureBoxStyle.Signature },
+    new SignatureBox("txsign_init") { SigningRequired = true, Style = SignatureBox.SignatureBoxStyle.Initials }}
+    };
+}).Render()
+
+@*<button onclick="LoadDocument('vendor.tx')"
+        class="btn mt-3 btn-success">
+    Load Document
+</button>*@
+<script>
+
+
+    function LoadDocument(filename) {
+        $('.alert').show();
+
+        var bDocument;
+        var serviceURL = "@Url.Action("LoadDocument", "Home")";
+        // send document to controller
+        $.ajax({
+            type: "GET",
+            url: serviceURL,
+            data: {
+                filename: filename
+            },
+            success: successFunc,
+            error: errorFunc
+        });
+    }
+    function successFunc(data, status) {
+        TXDocumentViewer.loadDocument(data, "loaded.tx");
+        TXDocumentViewer.
+        TXDocumentViewer.toggleSidebar();
+        $('.alert').hide();
+    }
+    function errorFunc() {
+        alert("Error");
+    }
+    
+</script>

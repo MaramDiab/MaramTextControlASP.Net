@@ -7,8 +7,11 @@
 
 <div class="tx-container">
     @Html.TXTextControl().TextControl(settings => {
+ 
     settings.WebSocketURL="wss://backend.textcontrol.com?access-token=h4CVCxoW9UANqceWL4qk";
-    }).Render()
+
+    }).LoadText("C:/Users/user/source/repos/MaramTX/MaramTX/wwwroot/vendor.tx",
+    StreamType.MSWord).Render()
 
   
 </div>

@@ -106,5 +106,8 @@
     <PkgTXTextControl_Web Condition=" '$(PkgTXTextControl_Web)' == '' ">C:\Users\user\.nuget\packages\txtextcontrol.web\31.0.0</PkgTXTextControl_Web>
     <PkgTXTextControl_TextControl_WinForms_SDK Condition=" '$(PkgTXTextControl_TextControl_WinForms_SDK)' == '' ">C:\Users\user\.nuget\packages\txtextcontrol.textcontrol.winforms.sdk\31.0.0</PkgTXTextControl_TextControl_WinForms_SDK>
     <PkgTXTextControl_TextControl_ASP_SDK Condition=" '$(PkgTXTextControl_TextControl_ASP_SDK)' == '' ">C:\Users\user\.nuget\packages\txtextcontrol.textcontrol.asp.sdk\31.0.0</PkgTXTextControl_TextControl_ASP_SDK>
+    <PkgMessagePackAnalyzer Condition=" '$(PkgMessagePackAnalyzer)' == '' ">C:\Users\user\.nuget\packages\messagepackanalyzer\2.1.152</PkgMessagePackAnalyzer>
+    <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">C:\Users\user\.nuget\packages\microsoft.codeanalysis.analyzers\3.3.2</PkgMicrosoft_CodeAnalysis_Analyzers>
+    <PkgMicrosoft_CodeAnalysis_AnalyzerUtilities Condition=" '$(PkgMicrosoft_CodeAnalysis_AnalyzerUtilities)' == '' ">C:\Users\user\.nuget\packages\microsoft.codeanalysis.analyzerutilities\3.3.0</PkgMicrosoft_CodeAnalysis_AnalyzerUtilities>
   </PropertyGroup>
 </Project>

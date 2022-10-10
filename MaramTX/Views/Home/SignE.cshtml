@@ -1,0 +1,125 @@
+﻿@using TXTextControl.Web.MVC
+@using TXTextControl.Web
+
+@using System.Text
+@using MaramTX.Controllers
+
+@Html.TXTextControl().TextControl(settings => {
+    settings.UserNames= new string[] { "Maram@textcontrol.com", "group1@textcontrol.com"};
+	settings.WebSocketURL="wss://backend.textcontrol.com?access-token=h4CVCxoW9UANqceWL4qk";
+}).Render()
+<div class="demo clean">
+    <div class="row">
+        <div class="col-12">
+       
+
+           @* <h3 class="nav-visible">1. Create your Template</h3>
+
+            <p>You can use any template in any supported format to add signature boxes to the document. A signature box is a <em>TextFrame</em> with a specific name that can be defined.</p>
+
+            <ol>
+                <li>
+                    <p>Use the Insert Text Frame menu item to insert a text frame at the location you would like to have the signature boxes rendered.</p>
+                </li>
+                <li>
+                    <p>Select the TextFrame and set the name of the object to <em>txsign</em>.</p>
+                </li>
+                <li>
+                    <p>Alternatively, you can insert signature boxes programmatically. Use the button <em>Insert Signature Box</em> located under the document editor to insert a TextFrame with the required name programmatically.</p>
+                </li>
+            </ol>
+        *@
+            <div id="tx-box" class="tx-container">
+                @Html.TXTextControl().TextControl(settings =>
+                {
+               // settings.ServiceAddress = IPAddress.Parse(System.Configuration.ConfigurationManager.AppSettings["ServiceAddress"]);
+                settings.Dock = DockStyle.Fill;
+                }).Render()
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+<button onclick="InsertTextFrame('txsign')" class="btn mb-3 btn-success">Insert Signature Box</button>
+<button onclick="LoadViewer()" class="btn mb-3 btn-success">Load in Viewer</button>
+
+<div class="demo clean">
+    <div class="row">
+        <div class="col-12">
+
+       @*     <a id="doctarget" name="Load in DocumentViewer"></a>
+            <h3 class="nav-visible">2. Load in DocumentViewer</h3>
+
+            <p>In the next step, the document is loaded into the DocumentViewer.</p>*@
+
+            <div id="tx-box" class="tx-container">
+                 @Html.Partial("~/Views/Home/MaramTest.cshtml", null)
+                
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@*<button onclick="show()">show</button>
+<div id="testt" hidden>
+    @Html.Partial("~/Views/Home/MaramTest.cshtml", null)
+</div>*@
+<script>
+    function show() {
+
+        $('#testt').removeAttr('hidden');
+        $("#testt").show();
+    }
+</script>
+
+
+<script>
+
+
+    function InsertTextFrame(name) {
+        TXTextControl.textFrames.addAnchored(
+            { width: 3000, height: 2000 },
+            TXTextControl.HorizontalAlignment.Center,
+            0, // TextPosition
+            TXTextControl.TextFrameInsertionMode.AboveTheText,
+
+            (addedTextFrame) => {
+                addedTextFrame.selection.setText("Signature Box");
+                addedTextFrame.setBackColor("LightGrey");
+                addedTextFrame.setName("txsign");
+            }
+        );
+    }
+
+    function LoadViewer() {
+
+        var bDocument;
+
+        var signatureSettings = {
+            signerName: "Tim Typer",
+            signerInitials: "TT",
+            uniqueId: "12345-ABCDE",
+            redirectUrlAfterSignature: "CreatingSignatures?signed=true",
+            ownerName: "Document Requestor",
+            signatureBoxName: "txsign",
+            showSignatureBar: true
+        }
+
+        // save document
+        TXTextControl.saveDocument(TXTextControl.StreamType.InternalUnicodeFormat, function (e) {
+            bDocument = e.data;
+
+            TXDocumentViewer.loadDocument(
+                bDocument,
+                "pleasesignme.tx",
+                signatureSettings);
+        });
+    }
+
+
+
+</script>

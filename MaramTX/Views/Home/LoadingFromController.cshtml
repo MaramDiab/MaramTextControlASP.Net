@@ -2,58 +2,147 @@
 @using TXTextControl.Web
 @using System.Text
 @using MaramTX.Controllers
-@*this contain load document export them and contrl the permission to user*@
 
 @Html.TXTextControl().TextControl(settings => {
+    settings.UserNames= new string[] { "Maram@textcontrol.com", "group1@textcontrol.com"};
 	settings.WebSocketURL="wss://backend.textcontrol.com?access-token=h4CVCxoW9UANqceWL4qk";
-       settings.UserNames = new string[] { "Paul" };//admin name
-   settings.EditMode = EditMode.ReadOnly | EditMode.UsePassword;
 }).Render()
 
 
-
 <button id="btnSelect" class="btn mt-3 btn-success">Load Document</button>
-<button onclick="ExportPDF()" class="btn mt-3 btn-success">Export PDF</button>
+
 <button onclick="ExportWord()" class="btn mt-3 btn-success">Export word</button>
 <button onclick="ExportExcel()" class="btn mt-3 btn-success">Export xlsx</button>
 <button onclick="ExportPowerpoint()" class="btn mt-3 btn-success">Export ppt</button>
-<button onclick="Permission" class="btn mt-3 btn-success">UserPermission</button>
-
+<button id="Export" class="btn mt-3 btn-success">Export PDF</button>
+<button onclick="Permission()" class="btn mt-3 btn-success">UserPermission</button>
+<button onclick="Test()" class="btn mt-3 btn-success">test</button>
+<button onclick="ExportVisio()" class="btn mt-3 btn-success">ExportVisio</button>
+<button onclick="addComment()" class="btn mt-3 btn-success">Add Comment</button>
 <script src="~/js/jquery.js"></script>
-<script>
+  <script>
+    async function addComment() {
+
+        var id = Math.random().toString(36).substring(2); // random id
+
+      //  var userName = await getUserNames();
+
+        // create comment object
+        var comment = {
+            comment: "",
+            author: "M",
+            timestamp: Date.now(),
+            id: id,
+        };
+
+        var range = await getSelectionRange();
+        TXTextControl.select(range.start, 0);
+
+        // insert start target
+        TXTextControl.documentTargets.add("txcs_" + id, dt => {
+            dt.setName(JSON.stringify(comment));
+            dt.setDeleteable(false);
+
+            TXTextControl.select(range.end, 0);
+
+            // insert end target
+            TXTextControl.documentTargets.add("txce_" + id, endTarget => {
+
+                _activeComment = id;
+                refreshComments();
+            });
+        });
+    }
+      function Comment(){
+        TXTextControl.ribbon.selectedTab = "tabProofing";
+        TXTextControl.showSideBar(TXTextControl.SideBarType.Comments, 1);
+        var sel = TXTextControl.selection;
+        sel.getStart(function (start) {
+            sel.getLength(function (length) {
+                TXTextControl.editableRegions.add("maram@g.com", 1, start + 1, length);
+            })
+        })
+        //get the user name that edit on the document
+        TXTextControl.editableRegions.forEach(function (er) {
+            console.log("editable region user ");
+            er.getUserName(function (username) {
+                console.log(username);
+            });
+        });
+        //TXTextControl.Windows.Forms.Sidebar sidebar = new TXTextControl.Windows.Forms.Sidebar();
+        //sidebar.ShowPinButton = false;
+        //sidebar.IsPinned = true;
+        //sidebar.IsShown = false;
+        //sidebar.IsSizable = false;
+        //sidebar.ShowTitle = false;
+        //sidebar.TitleFont = new System.Drawing.Font("Times New Roman", 12);
+        //sidebar.Text = "mySidebarText"; // here, the Text property is set
+        //sidebar.DialogStyle = TXTextControl.Windows.Forms.Sidebar.SidebarDialogStyle.Standard;
+        //sidebar.DialogSize = System.Drawing.Size.Empty;
+        //sidebar.DialogLocation = System.Drawing.Point.Empty;
+        //sidebar.ContentLayout = TXTextControl.Windows.Forms.Sidebar.SidebarContentLayout.None;
+        //sidebar.Content = myControl; // here, the Content property is set to a System.Windows.Forms.Control named myControl
+
+      }
+      function Test(){
+        console.log("test the track changes");
+        
+        TXTextControl.ribbon.selectedTab = "tabProofing";
+
+        TXTextControl.isTrackChangesEnabled = true;
+        TXTextControl.showSideBar(TXTextControl.SideBarType.TrackChanges, 1);
+        //get the user name that edit on the document 
+        TXTextControl.editableRegions.forEach(function (er) {
+            console.log("editable region user ");
+            er.getUserName(function (username) {
+                console.log(username);
+            });
+        });
+       TXTextControl.isTrackChangesEnabled=true;
+       //console.log(TXTextControl.TrackedChangeCollection);
+        //  console.log(TXTextControl.TrackedChange.Text);
+       
+       
+
+      }
     //permission section
     //This list of user names contains all users with active exceptions in
     //  the currently loaded document. The user is able to add additional users using the dialog box Add Users:
     function Permission() {
         //it is only possible to add existing users (including the newly added users) to the list:
-
-
-        console.log("User");
+        console.log("User");//user
         TXTextControl.ribbonPermissionsTab.registeredUserNames =
             ["user@textcontrol.com", "group1@textcontrol.com"];
+            //cant add new users 
         TXTextControl.ribbonPermissionsTab.allowAdditionalUserNames = false;
         var sel = TXTextControl.selection;
-
         sel.getStart(function (start) {
             sel.getLength(function (length) {
                 TXTextControl.editableRegions.add("user@textcontrol.com", 1, start + 1, length);
             })
         })
-
         TXTextControl.editableRegions.forEach(function (er) {
-            er.getUserName(function (username) { console.log(username); });
+            console.log("editable region user ");
+            er.getUserName(function (username) { console.log(username); 
+            });
         });
 
+
+        TXTextControl.addEventListener("ribbonTabsLoaded", function () {
+    $("#tabFile").parent().remove();
+    $("#ribbonTabInsert_btnInsertFile").remove();
+    $("#ribbonTabReports_btnLoadDBScheme").remove();
+
+    TXTextControl.ribbon.selectedTab = "tabProofing";
+
+    TXTextControl.isTrackChangesEnabled = true;
+    TXTextControl.showSideBar(TXTextControl.SideBarType.TrackChanges, 1);
+});
+
     }
-</script>
-
-
-
-
-<script>
-    //load document then export in any form
+   </script>
+ <script>
     var filename;
-
     $("#btnSelect").click(function () {
 
         var $input = $('<input type="file" />');
@@ -62,21 +151,22 @@
             var arr = str.split("\\");
             var len = arr.length;
             filename = arr[len - 1];
-            //alert(filename);
+            //      alert(filename);
             LoadDocument(filename);
         });
         $input.trigger('click');
     });
     var html = "This is some <b>HTML</b> text.";
 
-
     var encoded = btoa(html); // btoa base-64-encodes strings.
     var fileExt;
 
-    var files = filename;
 
     function LoadDocument(filename) {
 
+
+        var x = document.getElementById("test");
+        //alert(x);
         var serviceURL = "@Url.Action("LoadDocument", "Home")";
         $.ajax({
             type: "GET",
@@ -126,15 +216,58 @@
                 TXTextControl.loadDocument(TXTextControl.StreamType.SpreadsheetML, data);
 
             }
+            else if (fileExt == 'tx') {
+                TXTextControl.loadDocument(TXTextControl.StreamType.MSWord, data);
+
+            }
+
+            //TXTextControl.loadDocument(TXTextControl.StreamType.WordprocessingML, data);
+
+            //HTMLFormat: 0x0004,
+            //RichTextFormat: 0x0008,
+            //PlainText: 0x0010,
+            //InternalUnicodeFormat: 0x0020,
+            //MSWord: 0x0040,
+            //AdobePDF: 0x0200,
+            //WordprocessingML: 0x0400
+            // TXTextControl.loadDocument(TXTextControl.StreamType.HTMLFormat, encoded);
+
         }
         function errorFunc() {
             alert("Error");
         }
+      
+       
 
+    }
 
+    document.getElementById("Export").onclick = function () { ExportPDF() }
 
-        function ExportPDF() {
-            var name = filename.split(".");
+    function ExportPDF() {
+        if(filename!=null){
+        var name = filename.split(".");
+        console.log(name[0]);
+        // save document
+        TXTextControl.saveDocument(TXTextControl.StreamType.AdobePDF, function (e) {
+            // create temporary link element
+            var element = document.createElement('a');
+            console.log("im here")
+            element.setAttribute('href', 'data:application/octet-stream;base64,' + e.data);
+            console.log("pdf");
+            element.setAttribute('download', name[0] + ".pdf");
+
+            element.style.display = 'none';
+            document.body.appendChild(element);
+
+            // simulate click
+            element.click();
+
+            // remove the link
+            document.body.removeChild(element);
+        });
+        }
+        else {
+
             // save document
             TXTextControl.saveDocument(TXTextControl.StreamType.AdobePDF, function (e) {
                 // create temporary link element
@@ -142,7 +275,7 @@
                 console.log("im here")
                 element.setAttribute('href', 'data:application/octet-stream;base64,' + e.data);
                 console.log("pdf");
-                element.setAttribute('download', name[0] + ".pdf");
+                element.setAttribute('download',"test.pdf");
 
                 element.style.display = 'none';
                 document.body.appendChild(element);
@@ -154,16 +287,38 @@
                 document.body.removeChild(element);
             });
         }
+    }
 
 
-        function ExportWord() {
-            var name = filename.split(".");
+    function ExportWord() {
+        if(filename!=null){
+        var name = filename.split(".");
+        // save document
+        TXTextControl.saveDocument(TXTextControl.StreamType.AdobePDF, function (e) {
+            // create temporary link element
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:application/octet-stream;base64,' + e.data);
+            element.setAttribute('download', name[0] + ".docx");
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            // simulate click
+            element.click();
+            // remove the link
+            document.body.removeChild(element);
+        });
+
+
+        }
+        else {
+
             // save document
             TXTextControl.saveDocument(TXTextControl.StreamType.AdobePDF, function (e) {
                 // create temporary link element
                 var element = document.createElement('a');
+                console.log("im here")
                 element.setAttribute('href', 'data:application/octet-stream;base64,' + e.data);
-                element.setAttribute('download', name[0] + ".docx");
+                console.log("pdf");
+                element.setAttribute('download', "test.docx");
 
                 element.style.display = 'none';
                 document.body.appendChild(element);
@@ -176,14 +331,34 @@
             });
         }
 
-        function ExportExcel() {
-            var name = filename.split(".");
+    }
+    function ExportExcel() {
+        if(filename!=null){
+        var name = filename.split(".");
+        // save document
+        TXTextControl.saveDocument(TXTextControl.StreamType.AdobePDF, function (e) {
+            // create temporary link element
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:application/octet-stream;base64,' + e.data);
+            element.setAttribute('download', name[0] + ".xlsx");
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            // simulate click
+            element.click();
+            // remove the link
+            document.body.removeChild(element);
+        });}
+
+        else {
+
             // save document
             TXTextControl.saveDocument(TXTextControl.StreamType.AdobePDF, function (e) {
                 // create temporary link element
                 var element = document.createElement('a');
+                console.log("im here")
                 element.setAttribute('href', 'data:application/octet-stream;base64,' + e.data);
-                element.setAttribute('download', name[0] + ".xlsx");
+                console.log("pdf");
+                element.setAttribute('download', "test.xlsx");
 
                 element.style.display = 'none';
                 document.body.appendChild(element);
@@ -195,16 +370,33 @@
                 document.body.removeChild(element);
             });
         }
+    }
+    function ExportPowerpoint() {
+        if(filename!=null){
+        var name = filename.split(".");
+        // save document
+        TXTextControl.saveDocument(TXTextControl.StreamType.AdobePDF, function (e) {
+            // create temporary link element
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:application/octet-stream;base64,' + e.data);
+            element.setAttribute('download', name[0] + ".ppt");
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            // simulate click
+            element.click();
+            // remove the link
+            document.body.removeChild(element);
+        });}
+        else {
 
-
-        function ExportPowerpoint() {
-            var name = filename.split(".");
             // save document
             TXTextControl.saveDocument(TXTextControl.StreamType.AdobePDF, function (e) {
                 // create temporary link element
                 var element = document.createElement('a');
+                console.log("im here")
                 element.setAttribute('href', 'data:application/octet-stream;base64,' + e.data);
-                element.setAttribute('download', name[0] + ".ppt");
+                console.log("pdf");
+                element.setAttribute('download', "test.ppt");
 
                 element.style.display = 'none';
                 document.body.appendChild(element);
@@ -216,5 +408,57 @@
                 document.body.removeChild(element);
             });
         }
+
+
+
+
+
+
+
+
+
+
+
+        }
+    function ExportVisio() {
+        if(filename!=null){
+        var name = filename.split(".");
+        // save document
+        TXTextControl.saveDocument(TXTextControl.StreamType.AdobePDF, function (e) {
+            // create temporary link element
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:application/octet-stream;base64,' + e.data);
+            element.setAttribute('download', name[0] + ".vsdx");
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            // simulate click
+            element.click();
+            // remove the link
+            document.body.removeChild(element);
+        });
+        }
+             else {
+
+            // save document
+            TXTextControl.saveDocument(TXTextControl.StreamType.AdobePDF, function (e) {
+                // create temporary link element
+                var element = document.createElement('a');
+                console.log("im here")
+                element.setAttribute('href', 'data:application/octet-stream;base64,' + e.data);
+                console.log("pdf");
+                element.setAttribute('download', "test.vsdx");
+
+                element.style.display = 'none';
+                document.body.appendChild(element);
+
+                // simulate click
+                element.click();
+
+                // remove the link
+                document.body.removeChild(element);
+            });
+        }
+    }
+
 </script>
 

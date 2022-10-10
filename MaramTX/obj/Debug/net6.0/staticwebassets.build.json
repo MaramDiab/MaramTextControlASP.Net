@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2318jQ4xOsCIwtfwgKhGqrlIBniwhVi2jZ3lDJ2OSmI=",
+  "Hash": "eWgI1jN8JH2Z1Sr82wPa/cNSWgCgLeBRm6lJmLObcNA=",
   "Source": "MaramTX",
   "BasePath": "_content/MaramTX",
   "Mode": "Default",
@@ -185,6 +185,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
+    },
+    {
+      "Identity": "C:\\Users\\user\\source\\repos\\MaramTX\\MaramTX\\wwwroot\\lease_agreement.tx",
+      "SourceId": "MaramTX",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\user\\source\\repos\\MaramTX\\MaramTX\\wwwroot\\",
+      "BasePath": "_content/MaramTX",
+      "RelativePath": "lease_agreement.tx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lease_agreement.tx"
     },
     {
       "Identity": "C:\\Users\\user\\source\\repos\\MaramTX\\MaramTX\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",

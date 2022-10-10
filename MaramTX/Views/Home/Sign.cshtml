@@ -1,0 +1,36 @@
+﻿@using TXTextControl.Web.MVC.DocumentViewer
+
+
+<div class="tx-container">
+    @Html.TXTextControl().DocumentViewer(settings => {
+    settings.DocumentPath = "C:/Users/user/source/repos/MaramTX/MaramTX/wwwroot/vendor.tx";
+    settings.Dock = DocumentViewerSettings.DockStyle.Fill;
+    settings.IsSelectionActivated = false;
+    settings.ShowThumbnailPane = true;
+    settings.SignatureSettings = new SignatureSettings() {
+    ShowSignatureBar = true,
+    OwnerName = "Maram Diab",
+    SignerName = "Wajeeh",
+    SignerInitials = "WJ",
+    SignatureBoxName = "txsign",
+    //UniqueId = uniqueID,
+   
+   // RedirectUrlAfterSignature = this.Url.Action("ExportPDF", "Home", null,, null),
+    SignatureBoxes = new SignatureBox[] {
+    new SignatureBox("txsign") { SigningRequired = true, Style = SignatureBox.SignatureBoxStyle.Signature },
+   
+    new SignatureBox("txsign_init") { SigningRequired = true, Style = SignatureBox.SignatureBoxStyle.Initials }}
+    };
+    }).Render()
+</div>
+<button onclick="show()">show</button>
+<div id="testt" hidden>
+    @Html.Partial("~/Views/Home/MaramTest.cshtml", null)
+</div>
+<script>
+    function show(){
+
+        $('#testt').removeAttr('hidden');
+        $("#testt").show();
+    }
+</script>

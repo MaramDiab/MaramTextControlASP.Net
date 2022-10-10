@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="jQuery" Version="1.4.4" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.9" />
     <PackageReference Include="TXTextControl.DocumentServices.DocumentEditor" Version="2.0.0" />
     <PackageReference Include="TXTextControl.DocumentServices.DocumentViewer" Version="2.0.2" />
     <PackageReference Include="TXTextControl.TextControl.ASP.SDK" Version="31.0.0" />
